@@ -1,0 +1,97 @@
+	# Aircraft spec file
+	#
+	# Enter each option without extra spaces between the name and '=' char
+	# Put strings inside "quotes". Do not use the § character for anything.
+	#
+	# ************************************************************
+	# NOT IN ANY WAY VERIFIED YET
+	# ************************************************************
+
+	# aircraft registration
+	ACFT="OH-KAM (draft)"
+
+	# aircraft type and short description
+	ACFT_TYPE="Diamond DA40NG"
+
+	# where the mass and balance numbers come from
+	DATA_ORIGIN="Numbers: OH-KAM mass and balance excel 1.0.3 and AFM v3"
+
+	# 1 litre fuel weight in kilos
+	LITRE2KILO=0.840
+
+	# Measurements in metres and kilos
+	MOMENT_ARMS=[2.4, 2.4, 2.42, 2.46, 2.53, 2.53]
+	TOF_MASS_LIMITS=[940, 1080, 1150, 1280, 1280, 940]
+	LND_MASS_LIMITS=[940, 1080, 1150, 1216, 1216, 940]
+
+	# You may need to tweak these values for the mass and balance diagram
+	# to fit nicely inside the bounding rectangle.
+	MOM_DRAW_MAX=475
+	MASS_DRAW_MAX=390
+
+	# This moves the limits diagram horizontally by the given amount.
+	TRANSLATE_X=50
+
+	# These are moment-arms of the x-coordinates of the landing limit.
+	# These are needed if the aircraft's MLM < MTOM
+	# LND_LIMIT_X1=2.44 is an estimate, X2=2.53 is accurate
+
+	LND_LIMIT_X1=2.44
+	LND_LIMIT_X2=2.53
+
+	# New load points can be added.
+	#
+	# The load points appear in the table in the order they are introduced below.
+	#
+	# LP_N_xxx = non-interactive load point xxx
+	# LP_R_xxx = non-interactive load point xxx, with reversed output cells
+	# LP_I_xxx = interactive load point xxx, the default value will be saveable
+	# LP_F_xxx = interactive fiel flow load point xxx, the default value will be saveable
+	# LP_C_xxx = interactive checkbox row, saveable
+	#
+	# The checkbox state is ON if max value = default value.
+	#
+	# Name English Finnish unit default min max moment-arm [step]
+	#
+	# If the max value is a negative value, it is not printed out in the description.
+	#
+	# Substitute all spaces with '#' in the English/Finnish field.
+	#
+	# The [step] is optional, it sets how discrete steps the slider takes when adjusted.
+	#
+	# The following names are fixed. You can't change these names, but you can rearrange them.
+	# You can also remove the back seat row.
+
+
+	# For example Front seat, values in kg, default=170, min=50, max=250,
+	# moment-arm=2.3, slider-step=1
+	# LOAD_POINT=LP_I_FRONT_SEAT "Front#seats" "Etupenkki" "kg" 170 50 -250 2.300 1
+
+	# OH-KAM AFM rev. 3 page 6-7 and v3 excel NOT OFFICIAL
+	LOAD_POINT=LP_R_BASIC_WEIGHT "Basic#weight" "Perusmassa" "kg" 906.8 0 -1 2.434
+	LOAD_POINT=LP_I_FRONT_SEAT "Front#seats" "Etupenkki" "kg" 170 50 250 2.300 1
+	LOAD_POINT=LP_I_BACK_SEAT "Rear#seats" "Takapenkki" "kg" 0 0 -250 3.250 1
+	LOAD_POINT=LP_I_FUEL "Fuel" "Polttoaine" "ltr" 70.0 0 148.0 2.630 0.1
+	LOAD_POINT=LP_I_BAGGAGE "Cockpit#baggage" "Matkatavaratila" "kg" 10 0 45 3.890
+	LOAD_POINT=LP_I_YOUR_POINT "Extended#baggage" "Takatavaratila" "kg" 0 0 18 4.54 1
+	# LOAD_POINT=LP_C_FAIRINGS "Wheel#fairings" "Renkaiden#muotosuojat" "kg" 0 -3.75 0 2.24
+	LOAD_POINT=LP_I_TAXI_FUEL "Taxi#fuel" "Rullauspolttoaine" "ltr" 5 0 -20 2.630 0.1
+	LOAD_POINT=LP_N_TOW "Take-off#mass" "Lähtömassa" "kg" 0 940 1280 1
+	LOAD_POINT=LP_N_LNDW "Landing#mass" "Laskumassa" "kg" 0 940 1216 1
+	LOAD_POINT=LP_N_ENDURANCE "Endurance" "Toiminta-aika" "min" 0 1 -800 0
+	LOAD_POINT=LP_F_FUEL_FLOW "Fuel#flow/h" "Kulutus/h" "ltr" 23 12 -40 1 0.1
+	LOAD_POINT=LP_I_FLIGHT_TIME "Flight#time" "Lentoaika" "min" 60 1 -300 0
+
+	# Add your extra load points following the scheme from above
+	#
+	# Each load point must have a unique name.
+	#
+	# It makes sense to add only new interactive points, because you can adjust their loading,
+	# which then affects the take-off and landing masses.
+	# The mass unit has to be "kg".
+	#
+	# For example:
+	#
+	# An interactive point, named "Test point", values in kg, default=50, min=10, max=100,
+	# moment-arm=1.5, slider-step=0.1
+
